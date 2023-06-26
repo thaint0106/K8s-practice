@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: my-service
+subnets:
+  - addresses:
+      - ip: 74.125.68.102
+    ports:
+      - name: http
+        port: 80
+        protocal: TCP
