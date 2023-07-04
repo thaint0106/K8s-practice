@@ -1,0 +1,14 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: my-csi-app
+spec:
+  containers:
+    - name: nginx
+      image: nginx:latest
+      volumeMounts:
+      - mountPath: "/data"
+        name: my-csi-inline-vol
+  volumes:
+    - name: my-csi-inline-vol
+      emptyDir: {}

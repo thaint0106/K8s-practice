@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: persistent-pod
+spec:
+  selector:
+    matchLabels:
+      name: persistent-demo
+  template:
+    metadata:
+      name:  persistent-pod
+      labels:
+        name: persistent-demo
+    spec:
+      volumes:
+        - name: my-volume
+          persistentVolumeClaim:
+            claimName: pvc-demo
+      containers:
+      - name: my-box
+        image: busybox
+        resources:
+          limits:
+            memory: 50Mi
+            cpu: 100m
+        command:
+          - sleep
+          - "600"
+        volumeMounts:
+          - mountPath: "/data"
+            name: my-volume
