@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv
+  namespace: logging
+  labels:
+    name: pv
+spec:
+  storageClassName: es-storage
+  capacity:
+    storage: 4Gi
+  accessModes:
+    - ReadWriteOnce # chi cho 1 node
+  hostPath:
+    path: /es-data
