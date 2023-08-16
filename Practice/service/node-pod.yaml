@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-service
+  name: landing-page-service
+  namespace: devops-tools
 spec:
-  type: NodePort
-  selector:
-    app: my-app
+  selector: 
+    app: landing-page
+  type: NodePort  
   ports:
-    - name: http
-      port: 80
+    - port: 80
       targetPort: 80
-      nodePort: 30000
+      nodePort: 31999
